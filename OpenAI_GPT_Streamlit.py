@@ -57,7 +57,7 @@ if input_text:
         if st.button('Submit'):
             openai.api_key = apikey
             response = openai.ChatCompletion.create(model=model, messages=messages, temperature=temperature, max_tokens=max_tokens, top_p=top_p)
-            output = response['choices'][0]['message']
+            output = response['choices'][0]['message']['content']
             today = datetime.today().strftime('%Y-%m-%d')
             topic = input_text+"\n@Date: "+str(today)+"\n"+output
         
