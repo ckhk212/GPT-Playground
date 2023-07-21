@@ -50,11 +50,13 @@ apikey = st.text_input("Your API Key", disabled=False, type="password", placehol
 input_text = st.text_area("Topic of interest (press Ctrl-Enter once you have completed your inquiry)", disabled=False, placeholder="What topic you would like to ask?")
 
 if input_text:
-    prompt = str(input_text)
-    if prompt:
+    messages = [
+      {"role": "user", "content": str(input_text)}
+    ] 
+    if messages:
         if st.button('Submit'):
             openai.api_key = apikey
-            response = openai.ChatCompletion.create(model=model, messages=prompt, temperature=temperature, max_tokens=max_tokens, top_p=top_p)
+            response = openai.ChatCompletion.create(model=model, messages=messages, temperature=temperature, max_tokens=max_tokens, top_p=top_p)
             output = response['choices'][0]['text']
             today = datetime.today().strftime('%Y-%m-%d')
             topic = input_text+"\n@Date: "+str(today)+"\n"+output
