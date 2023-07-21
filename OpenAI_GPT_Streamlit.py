@@ -26,7 +26,7 @@ with st.sidebar:
     st.markdown("""
     ## Options 
     """)
-    engine = st.selectbox('Engine:', ('text-davinci-003', 'text-davinci-002', 'text-davinci-001', 'text-curie-001', 'text-babbage-001', 'text-ada-001'))
+    model = st.selectbox('Model:', ('gpt-4'))
     temperature = st.slider('Temperature:', min_value=0.0, max_value=2.0, value=0.7, step=0.1)
     top_p = st.slider('Top P:', min_value=0.0, max_value=1.0, value=0.5, step=0.1)
     max_tokens = st.slider('Max Tokens:', min_value=100, max_value=4096, value=200, step=50)
@@ -54,7 +54,7 @@ if input_text:
     if prompt:
         if st.button('Submit'):
             openai.api_key = apikey
-            response = openai.Completion.create(engine=engine, prompt=prompt, temperature=temperature, max_tokens=max_tokens, top_p=top_p)
+            response = openai.Completion.create(model=model, prompt=prompt, temperature=temperature, max_tokens=max_tokens, top_p=top_p)
             output = response['choices'][0]['text']
             today = datetime.today().strftime('%Y-%m-%d')
             topic = input_text+"\n@Date: "+str(today)+"\n"+output
