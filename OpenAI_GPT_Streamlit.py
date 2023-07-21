@@ -33,7 +33,7 @@ with st.sidebar:
     st.markdown(html_temp.format("rgba(55, 53, 47, 0.16)"),unsafe_allow_html=True)
     
     st.markdown("""
-    Made by Raymond Ng
+    Created to Raymond Ng, Forked by KC
     """,
     unsafe_allow_html=True,
     )
