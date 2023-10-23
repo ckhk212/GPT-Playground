@@ -27,8 +27,8 @@ with st.sidebar:
     ## Options 
     """)
     model = st.selectbox('Model:', ('gpt-4', 'gpt-3.5-turbo'))
-    temperature = st.slider('Temperature:', min_value=0.0, max_value=2.0, value=1, step=0.1)
-    top_p = st.slider('Top P:', min_value=0.0, max_value=1.0, value=1, step=0.1)
+    temperature = st.slider('Temperature:', min_value=0.0, max_value=2.0, value=1.0, step=0.1)
+    top_p = st.slider('Top P:', min_value=0.0, max_value=1.0, value=1.0, step=0.1)
     max_tokens = st.slider('Max Tokens:', min_value=100, max_value=4096, value=200, step=50)
     st.markdown(html_temp.format("rgba(55, 53, 47, 0.16)"),unsafe_allow_html=True)
     
